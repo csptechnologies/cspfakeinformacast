@@ -54,20 +54,20 @@ HTML_TEMPLATE = """
         <h2>Shortcuts</h2>
         <div class="shortcut">
             <form method="post" action="/send_shortcut">
-                <input type="hidden" name="url" value="http://provisioning.csptech.org/lockdown.xml">
+                <input type="hidden" name="url" value="http://provisioning.csptech.org/secure.xml">
                 <input type="submit" value="Lockdown">
             </form>
         </div>
         <div class="shortcut">
             <form method="post" action="/send_shortcut">
-                <input type="hidden" name="url" value="http://provisioning.csptech.org/weathert.xml">
+                <input type="hidden" name="url" value="http://provisioning.csptech.org/weather.xml">
                 <input type="submit" value="Tornado">
             </form>
         </div>
         <div class="shortcut">
             <form method="post" action="/send_shortcut">
-                <input type="hidden" name="url" value="http://provisioning.csptech.org/fire.xml">
-                <input type="submit" value="Fire">
+                <input type="hidden" name="url" value="http://provisioning.csptech.org/activeshooter.xml">
+                <input type="submit" value="Active Shooter">
             </form>
         </div>
     </div>
