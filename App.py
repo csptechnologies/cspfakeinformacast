@@ -54,7 +54,7 @@ HTML_TEMPLATE = """
         <h2>Shortcuts</h2>
         <div class="shortcut">
             <form method="post" action="/send_shortcut">
-                <input type="hidden" name="url" value="http://provisioning.csptech.org/secure.xml">
+                <input type="hidden" name="url" value="http://provisioning.csptech.org/executelockdown.xml">
                 <input type="submit" value="Lockdown">
             </form>
         </div>
