@@ -1,6 +1,8 @@
 # Authors: CSP Technologies, Ryan Kim
 print("Authors: CSP Technologies, Ryan Kim")
 
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from flask import Flask, render_template_string, request, redirect, url_for
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -18,6 +20,7 @@ users = {
 IP_ADDRESSES = ["192.168.5.22", "192.168.5.30"] # put your cisco phone's ip seperated by commas
 USERNAME = "CSP" #phones username
 PASSWORD = "CSP" # phones password
+TYPE = "http" # protocol to use aka "https" or "http"
 
 # Templates
 HTML_TEMPLATE = """
@@ -92,10 +95,11 @@ def send_cgi_execute(url):
     for ip in IP_ADDRESSES:
         try:
             response = requests.post(
-                f'http://{ip}:80/CGI/Execute',
+                f'{TYPE}://{ip}/CGI/Execute',
                 auth=(USERNAME, PASSWORD),
                 timeout=5,
-                data={'XML': xml}
+                data={'XML': xml},
+                verify=False
             )
             response.raise_for_status()
         except requests.RequestException as e:
@@ -117,10 +121,11 @@ def send_cgi_text(title, text):
     for ip in IP_ADDRESSES:
         try:
             response = requests.post(
-                f'http://{ip}:80/CGI/Execute',
+                f'{TYPE}://{ip}/CGI/Execute',
                 auth=(USERNAME, PASSWORD),
                 timeout=5,
-                data={'XML': xml}
+                data={'XML': xml},
+                verify=False
             )
             response.raise_for_status()
         except requests.RequestException as e:
